@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="firstfragment">firstfragment</string>
     <string name="secod_fragment">Secod Fragment</string>
+    <string name="send">send</string>
 </resources>
