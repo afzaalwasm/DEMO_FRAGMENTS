@@ -7,22 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_first.view.*
-class FirstFragment : Fragment() {
-    private lateinit var cummunicator: Cummunicator
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_first, flfragment, false)
-        cummunicator = activity as Cummunicator
-       view.sendBtn.setOnClickListener{
-           cummunicator.passDataCom(view.messageInput.text.toString())
-       }
+class FirstFragment : Fragment(R.layout.fragment_first) {
+
+    lateinit var navController: NavController
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+        view.sendBtn.setOnClickListener {
+            val dataString = messageInput.text.toString()
+            val bundle = Bundle()
+            bundle.putString("data", dataString)
+            navController.navigate(R.id.action_firstFragment_to_secondFragment,bundle)
+        }
         Toast.makeText(context, "first fragment", Toast.LENGTH_LONG).show()
-        return view
     }
 }

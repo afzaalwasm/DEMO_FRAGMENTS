@@ -3,15 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nave_graph"
-    app:startDestination="@id/secondFragment2">
+    app:startDestination="@id/splashFragment">
+
 
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.wasim.demo_fragments.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.wasim.demo_fragments.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
     <fragment
-        android:id="@+id/secondFragment2"
-        android:name="com.wasim.demo_fragments.SecondFragment"
-        android:label="SecondFragment" />
+        android:id="@+id/splashFragment"
+        android:name="com.wasim.demo_fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_firstFragment"
+            app:destination="@id/firstFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splashFragment"
+            />
+    </fragment>
 </navigation>
