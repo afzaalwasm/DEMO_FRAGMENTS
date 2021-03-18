@@ -22,8 +22,10 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         navController = Navigation.findNavController(view)
         view.sendBtn.setOnClickListener {
             val dataString = messageInput.text.toString()
+            val dataString2 = messageInput2.text.toString()
             val bundle = Bundle()
             bundle.putString("data", dataString)
+            bundle.putString("data2", dataString2)
             navController.navigate(R.id.action_firstFragment_to_secondFragment,bundle)
         }
         Toast.makeText(context, "first fragment", Toast.LENGTH_LONG).show()
